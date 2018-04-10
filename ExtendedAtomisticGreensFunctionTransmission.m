@@ -114,8 +114,6 @@ RightPhonon = rmfield(RightPhonon,{'MatSurfGL','MatSurfGR','MatBulkG', ...
              'U_plus','U_plus_adv','U_minus','U_minus_adv', ... 
              'V_plus','V_plus_adv','V_minus','V_minus_adv'});
 
-
-
 % -----------------------------------------------------------------
 % Postprocessing transmission data for left and right lead mode
 % -----------------------------------------------------------------
@@ -151,4 +149,6 @@ fprintf(1,'   saved in %f seconds. \n\n',toc);
 disp(' ');
 
 return; % DEBUG LINE
+
+end
 
