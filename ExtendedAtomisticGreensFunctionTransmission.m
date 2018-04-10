@@ -1,7 +1,8 @@
 function ExtendedAtomisticGreensFunctionTransmission(InputFilesDir,OutputFilesDir)
-% DataFilesDir is the folder containing the input files and where the output files will be written
+% NOTE: InputFilesDir is the folder containing the input *.agf files
+% NOTE: InputFilesDir is the folder containing the output *.dat files 
 
-CurrDir = pwd;
+CurrDir = pwd; % current directory
 
 tic;
 
@@ -118,21 +119,6 @@ RightPhonon = rmfield(RightPhonon,{'MatSurfGL','MatSurfGR','MatBulkG', ...
 % Postprocessing transmission data for left and right lead mode
 % -----------------------------------------------------------------
 fprintf(1,'POSTPROCESSING DATA: \n\n',nw,length(wvec));
-% tic;
-% for nw = 1:numel(wvec)
-%     LeftPhonon(nw)  = MapBulkPhononModes(wvec(nw),LeftPhonon(nw),Left,LeftPhonDisp);
-%     RightPhonon(nw) = MapBulkPhononModes(wvec(nw),RightPhonon(nw),Right,RightPhonDisp);
-% end
-% fprintf(1,'++ Transmission data postprocessing took %f seconds. \n\n',toc);
-
-% -----------------------------------------------------------------
-% Plot transmission data for left and right lead mode
-% -----------------------------------------------------------------
-% tic;
-% fprintf(1,'++ Phonon transmission plot files: \n');
-% PlotModeTransmissionData(DataFilesDir,wvec,Left,Right,LeftPhonon,RightPhonon,PhononData);
-% fprintf(1,'   saved in %f seconds. \n\n',toc);
-% -----------------------------------------------------------------
 
 % -----------------------------------------------------------------
 % Write text files containing overall and individual phonon mode transmission results
