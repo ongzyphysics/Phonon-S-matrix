@@ -1,5 +1,5 @@
 function LeadPhonon = ComputeSurfaceGreensFunction(w_in,ww_in,InputParam)
-% Compute the left and right-facing surface Greens function of given lead
+% NOTE: Compute the left and right-facing surface Greens function of given lead
 
   w = w_in;
   ww = ww_in;
@@ -117,13 +117,13 @@ function LeadPhonon = ComputeSurfaceGreensFunction(w_in,ww_in,InputParam)
         % Extract wave vectors of right-propagating retarded states (between 0 and 2 pi)
       Q_plus_adv = imag(log(diag(L_plus_adv))).* ... 
                    and(gt(diag(abs(L_plus_adv)),0.95),lt(diag(abs(L_plus_adv)),1.05));
-        % Extract wave vectors of right-propagating advanced states
+        % Extract wave vectors of right-propagating advanced states (between 0 and 2 pi)
       Q_minus = -imag(log(diag(InvL_minus))).* ... 
                 and(gt(diag(abs(InvL_minus)),0.95),lt(diag(abs(InvL_minus)),1.05));
-        % Extract wave vectors of left-propagating retarded states
+        % Extract wave vectors of left-propagating retarded states (between 0 and 2 pi)
       Q_minus_adv = -imag(log(diag(InvL_minus_adv))).* ... 
                     and(gt(diag(abs(InvL_minus_adv)),0.95),lt(diag(abs(InvL_minus_adv)),1.05));
-        % Extract wave vectors of left-propagating advanced states
+        % Extract wave vectors of left-propagating advanced states (between 0 and 2 pi)
 
       U_plus      = OrthonormEigenmodes(U_plus,Q_plus);
       U_plus_adv  = OrthonormEigenmodes(U_plus_adv,Q_plus_adv);

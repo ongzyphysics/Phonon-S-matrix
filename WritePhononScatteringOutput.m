@@ -25,8 +25,8 @@ else
             nrange_out_R = gt(b_out_R_temp,0);
             nrange_out_L = gt(b_out_L_temp,0);
 
-            tmatrix_tmp = PhononData(nw_scatter).t_L;
-            rmatrix_tmp = PhononData(nw_scatter).r_L;
+            tmatrix_tmp = PhononData(nw_scatter).t_RL;
+            rmatrix_tmp = PhononData(nw_scatter).r_LL;
             tmatrix_tmp = tmatrix_tmp(nrange_out_R,nrange_in_L);
             rmatrix_tmp = rmatrix_tmp(nrange_out_L,nrange_in_L);
             Smatrix_L = [rmatrix_tmp' tmatrix_tmp'];
@@ -42,8 +42,8 @@ else
             nrange_out_L = gt(b_out_L_temp,0);
             nrange_out_R = gt(b_out_R_temp,0);
 
-            tmatrix_tmp = PhononData(nw_scatter).t_R;
-            rmatrix_tmp = PhononData(nw_scatter).r_R;
+            tmatrix_tmp = PhononData(nw_scatter).t_LR;
+            rmatrix_tmp = PhononData(nw_scatter).r_RR;
             tmatrix_tmp = tmatrix_tmp(nrange_out_L,nrange_in_R);
             rmatrix_tmp = rmatrix_tmp(nrange_out_R,nrange_in_R);
             Smatrix_R = [tmatrix_tmp' rmatrix_tmp'];
@@ -130,6 +130,21 @@ else
             vely_out_L_temp = vely_out_L_temp(nrange_out_L);
             velz_out_L_temp = velz_out_L_temp(nrange_out_L);
             b_out_L_temp  = b_out_L_temp(nrange_out_L);
+
+            % ===== (rationalize wave vectors by 2 pi) =====
+            qx_in_L_temp = 2*pi*qx_in_L_temp;
+            qy_in_L_temp = 2*pi*qy_in_L_temp;
+            qz_in_L_temp = 2*pi*qz_in_L_temp;
+            qx_in_R_temp = 2*pi*qx_in_R_temp;
+            qy_in_R_temp = 2*pi*qy_in_R_temp;
+            qz_in_R_temp = 2*pi*qz_in_R_temp;
+        
+            qx_out_L_temp = 2*pi*qx_out_L_temp;
+            qy_out_L_temp = 2*pi*qy_out_L_temp;
+            qz_out_L_temp = 2*pi*qz_out_L_temp;
+            qx_out_R_temp = 2*pi*qx_out_R_temp;
+            qy_out_R_temp = 2*pi*qy_out_R_temp;
+            qz_out_R_temp = 2*pi*qz_out_R_temp;
 
             % === write channel data === 
             filename_channel = sprintf('Output_Channels_%d.dat',nw);
